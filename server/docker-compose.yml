@@ -1,23 +1,27 @@
-version: '3'
+version: '3.3'
 services:
   server:
     depends_on:
-      - mysql
+      - db
+      - redis
     build: .
     environment:
       - DATABASE_HOSTNAME=mysql
       - DATABASE_NAME=vapor_auth
       - DATABASE_USER=vapor
       - DATABASE_PASSWORD=password
+      - REDIS_HOST=redis
       - GOOGLE_CALLBACK_URL=http://localhost:8080/google-complete
-      - GOOGLE_CLIENT_ID=59264327221-9rnkjq6ed2q1sn73u6bd0pnfcin3ghr0.apps.googleusercontent.com
-      - GOOGLE_CLIENT_SECRET=MsWw1L_rzGAJCZslzzvcjLF3
-  mysql:
-    image: "mysql"
+      - GOOGLE_CLIENT_ID=something
+      - GOOGLE_CLIENT_SECRET=something
+  db:
+    image: mysql:5
     environment:
       - DATABASE_HOSTNAME=mysql
       - DATABASE_NAME=vapor_auth
       - DATABASE_USER=vapor
       - DATABASE_PASSWORD=password
-      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+  redis:
+    image: redis:alpine
