@@ -1,1 +1,1 @@
-# vapor-auth
+# Vapor Auth
