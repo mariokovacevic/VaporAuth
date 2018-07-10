@@ -1,4 +1,4 @@
-# Vapor Auth
+# What is this?
 
 Server and Client example showing how easily is to integrate <a hreaf="https://github.com/vapor-community/Imperial">Imperail</a> in your Vapor application. 
 
