@@ -1,27 +1,42 @@
 version: '3.3'
 services:
-  server:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    image: api:dev
+    volumes:
+      - .:/app
+    entrypoint: bash
     depends_on:
       - db
       - redis
+    ports:
+       - "8080:8080"
     build: .
+    restart: always
+    working_dir: /app
+    stdin_open: true
+    tty: true
     environment:
-      - DATABASE_HOSTNAME=mysql
-      - DATABASE_NAME=vapor_auth
-      - DATABASE_USER=vapor
-      - DATABASE_PASSWORD=password
+      - DATABASE_HOSTNAME=localhost
+      - DATABASE_NAME=vapor
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
       - REDIS_HOST=redis
       - GOOGLE_CALLBACK_URL=http://localhost:8080/google-complete
-      - GOOGLE_CLIENT_ID=something
-      - GOOGLE_CLIENT_SECRET=something
+      - GOOGLE_CLIENT_ID=39780754119-r9l5aj6mfbtdnj95eph4jkqlt7ljevp5.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=UkHuF1LEDlRotRH0lgm9Cnip
   db:
-    image: mysql:5
+    image: mysql
+    volumes:
+      - ./data:/var/lib/mysql
+    restart: always
     environment:
-      - DATABASE_HOSTNAME=mysql
-      - DATABASE_NAME=vapor_auth
-      - DATABASE_USER=vapor
-      - DATABASE_PASSWORD=password
+      - DATABASE_HOSTNAME=localhost
+      - DATABASE_NAME=vapor
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   redis:
     image: redis:alpine

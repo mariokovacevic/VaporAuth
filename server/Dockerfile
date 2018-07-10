@@ -1,23 +1,21 @@
-FROM swift:4.1
+# Build image
+FROM swift:4.1 as builder
+RUN apt-get -qq update && apt-get -q -y install \
+  && rm -r /var/lib/apt/lists/*
+WORKDIR /app
+COPY . .
+RUN mkdir -p /build/lib && cp -R /usr/lib/swift/linux/*.so /build/lib
+RUN swift build -c release && mv `swift build -c release --show-bin-path` /build/bin
 
-ARG ENVIRONMENT
-ENV ENVIRONMENT ${ENVIRONMENT:-production}
-ENV DEBIAN_FRONTEND noninteractive
-ENV TZ=Europe/Berlin
-ENV TERM xterm
-RUN apt-get update && apt-get -y install wget lsb-release apt-transport-https
-RUN wget -q https://repo.vapor.codes/apt/keyring.gpg -O- | apt-key add -
-RUN echo "deb https://repo.vapor.codes/apt $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/vapor.list
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
-USER root
-
-RUN apt-get update && apt-get install
-RUN mkdir /root/vapor
-ADD . /root/vapor
-WORKDIR /root/vapor
-RUN cd /root/vapor && rm -rf .build
-RUN swift package update
-RUN swift build --configuration release
+# Production image
+FROM ubuntu:16.04
+RUN apt-get -qq update && apt-get install -y \
+  libicu55 libxml2 libbsd0 libcurl3 libatomic1 \
+  tzdata \
+  && rm -r /var/lib/apt/lists/*
+WORKDIR /app
+COPY --from=builder /build/bin/Run .
+COPY --from=builder /build/lib/* /usr/lib/
+COPY Resources/ ./Resources/
 EXPOSE 8080
-CMD .build/release/Run --hostname=0.0.0.0 --port=8080
+CMD .build/release/Run serve --hostname "0.0.0.0"
