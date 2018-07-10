@@ -1,42 +1,77 @@
 version: '3.3'
 services:
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile-dev
-    image: api:dev
-    volumes:
-      - .:/app
-    entrypoint: bash
+  vapor-app:
     depends_on:
       - db
       - redis
-    ports:
-       - "8080:8080"
     build: .
-    restart: always
-    working_dir: /app
-    stdin_open: true
-    tty: true
+    volumes:
+      - .:/app
     environment:
-      - DATABASE_HOSTNAME=localhost
+      - DATABASE_HOSTNAME=db
       - DATABASE_NAME=vapor
-      - DATABASE_USER=root
-      - DATABASE_PASSWORD=root
+      - DATABASE_USER=vapor
+      - DATABASE_PASSWORD=vapor
       - REDIS_HOST=redis
       - GOOGLE_CALLBACK_URL=http://localhost:8080/google-complete
       - GOOGLE_CLIENT_ID=39780754119-r9l5aj6mfbtdnj95eph4jkqlt7ljevp5.apps.googleusercontent.com
       - GOOGLE_CLIENT_SECRET=UkHuF1LEDlRotRH0lgm9Cnip
+    ports:
+       - "8080:8080"
+    stdin_open: true
+    tty: true
   db:
-    image: mysql
+    image: "mysql:5"
     volumes:
       - ./data:/var/lib/mysql
     restart: always
     environment:
-      - DATABASE_HOSTNAME=localhost
-      - DATABASE_NAME=vapor
-      - DATABASE_USER=root
-      - DATABASE_PASSWORD=root
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=vapor
+      - MYSQL_USER=vapor
+      - MYSQL_PASSWORD=vapor
+      - MYSQL_ROOT_PASSWORD=vapor
   redis:
     image: redis:alpine
+
+# version: '3.3'
+# services:
+#   vapor-api:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     image: api:dev
+#     volumes:
+#       - .:/app
+#     entrypoint: bash
+#     depends_on:
+#       - db
+#       - redis
+#     ports:
+#        - "8080:8080"
+#     build: .
+#     restart: always
+#     working_dir: /app
+#     stdin_open: true
+#     tty: true
+#     environment:
+#       - DATABASE_HOSTNAME=localhost
+#       - DATABASE_NAME=vapor
+#       - DATABASE_USER=root
+#       - DATABASE_PASSWORD=root
+#       - REDIS_HOST=redis
+#       - GOOGLE_CALLBACK_URL=http://localhost:8080/google-complete
+#       - GOOGLE_CLIENT_ID=39780754119-r9l5aj6mfbtdnj95eph4jkqlt7ljevp5.apps.googleusercontent.com
+#       - GOOGLE_CLIENT_SECRET=UkHuF1LEDlRotRH0lgm9Cnip
+#   db:
+#     image: mysql
+#     volumes:
+#       - ./data:/var/lib/mysql
+#     restart: always
+#     environment:
+#       - DATABASE_HOSTNAME=localhost
+#       - DATABASE_NAME=vapor
+#       - DATABASE_USER=root
+#       - DATABASE_PASSWORD=root
+#       - MYSQL_ROOT_PASSWORD=root
+#   redis:
+#     image: redis:alpine

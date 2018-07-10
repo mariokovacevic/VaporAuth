@@ -43,63 +43,56 @@ public func configure(
     try services.register(FluentMySQLProvider())
     try services.register(LeafProvider())
     try services.register(AuthenticationProvider())
-    
+
     // Register routes to the router
     let router = EngineRouter.default()
     try routes(router)
     services.register(router, as: Router.self)
-    
+
     // Register middleware
     var middlewares = MiddlewareConfig() // Create _empty_ middleware config
     middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
     middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
     middlewares.use(SessionsMiddleware.self)
     services.register(middlewares)
-    
+
     // Configure a database
     var databases = DatabasesConfig()
     let databaseConfig: MySQLDatabaseConfig
-    if let url = Environment.get("DATABASE_URL") {
-        guard let urlConfig = try MySQLDatabaseConfig(url: url) else {
-            fatalError("Failed to create MySQLDatabaseConfig")
-        }
-        databaseConfig = urlConfig
-    } else {
-        let databaseName: String
-        let databasePort: Int
-        if (env == .testing) {
-            databaseName = "vapor-test"
-            if let testPort = Environment.get("DATABASE_PORT") {
-                databasePort = Int(testPort) ?? 3305
-            } else {
-                databasePort = 3305
-            }
-        } else {
-            databaseName = Environment.get("DATABASE_NAME") ?? "vapor"
-            databasePort = 3306
-        }
-        
-        let hostname = Environment.get("DATABASE_HOSTNAME") ?? "localhost"
-        let username = Environment.get("DATABASE_USER") ?? "root"
-        let password = Environment.get("DATABASE_PASSWORD") ?? "root"
-        databaseConfig = MySQLDatabaseConfig(hostname: hostname, port: databasePort, username: username, password: password, database: databaseName)
+
+    let databasePort = 3306
+
+    guard let databaseName = Environment.get("DATABASE_NAME") else {
+        fatalError("DATABASE_NAME no set")
     }
+    guard let hostname = Environment.get("DATABASE_HOSTNAME") else {
+        fatalError("DATABASE_HOSTNAME no set")
+    }
+    guard let username = Environment.get("DATABASE_USER") else {
+        fatalError("DATABASE_USER no set")
+    }
+    guard let password = Environment.get("DATABASE_PASSWORD") else {
+        fatalError("DATABASE_PASSWORD no set")
+    }
+
+    databaseConfig = MySQLDatabaseConfig(hostname: hostname, port: databasePort, username: username, password: password, database: databaseName)
+
     let database = MySQLDatabase(config: databaseConfig)
     databases.add(database: database, as: .mysql)
     services.register(databases)
-    
+
     // Configure migrations
     var migrations = MigrationConfig()
     migrations.add(model: User.self, database: .mysql)
     migrations.add(model: Token.self, database: .mysql)
     migrations.add(migration: AdminUser.self, database: .mysql)
     services.register(migrations)
-    
+
     // Configure the rest of your application here
     var commandConfig = CommandConfig.default()
     commandConfig.useFluentCommands()
     services.register(commandConfig)
-    
+
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)
     config.prefer(MemoryKeyedCache.self, for: KeyedCache.self)
 }
