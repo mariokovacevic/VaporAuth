@@ -1,6 +1,7 @@
 # What is this?
 
-Server and Client example showing how easily is to integrate ![Imperail]<https://github.com/vapor-community/Imperial> in your Vapor application. 
+Server and Client example showing how easily is to integrate [Imperial](https://github.com/vapor-community/Imperial) in your Vapor application. 
+
 
 # Instructions
 
