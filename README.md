@@ -5,5 +5,5 @@ Server and Client example showing how easily is to integrate [Imperial](https://
 
 # Instructions
 
-1. Open server using "vapor update -y" command in Xcode and click Run
+1. Update your project with vapor update
 2. Open client app in Xcode and click Run
