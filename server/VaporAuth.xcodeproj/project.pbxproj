@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD6A98C4214B19A20084E2D8 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A98C3214B19A20084E2D8 /* PasswordGenerator.swift */; };
 		OBJ_1047 /* ImperialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ImperialController.swift */; };
 		OBJ_1048 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* UsersController.swift */; };
 		OBJ_1049 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Token.swift */; };
@@ -5743,6 +5744,7 @@
 
 /* Begin PBXFileReference section */
 		"Auth::Authentication::Product" /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD6A98C3214B19A20084E2D8 /* PasswordGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		"Console::Command::Product" /* Command.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Command.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Console::Product" /* Console.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Console.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Logging::Product" /* Logging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Logging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9824,6 +9826,7 @@
 			children = (
 				OBJ_10 /* ImperialController.swift */,
 				OBJ_11 /* UsersController.swift */,
+				CD6A98C3214B19A20084E2D8 /* PasswordGenerator.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -11909,6 +11912,7 @@
 				OBJ_1048 /* UsersController.swift in Sources */,
 				OBJ_1049 /* Token.swift in Sources */,
 				OBJ_1050 /* User.swift in Sources */,
+				CD6A98C4214B19A20084E2D8 /* PasswordGenerator.swift in Sources */,
 				OBJ_1051 /* boot.swift in Sources */,
 				OBJ_1052 /* configure.swift in Sources */,
 				OBJ_1053 /* routes.swift in Sources */,

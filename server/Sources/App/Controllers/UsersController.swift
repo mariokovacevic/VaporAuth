@@ -32,17 +32,17 @@ import Crypto
 struct UsersController: RouteCollection {
     func boot(router: Router) throws {
         let usersRoute = router.grouped("api", "users")
-        usersRoute.post(User.self, use: createHandler)
+        usersRoute.post(User.self, use: self.createHandler)
 
         let basicAuthMiddleware = User.basicAuthMiddleware(using: BCryptDigest())
         let basicAuthGroup = usersRoute.grouped(basicAuthMiddleware)
-        basicAuthGroup.post("login", use: loginHandler)
+        basicAuthGroup.post("login", use: self.loginHandler)
         
         let tokenAuthMiddleware = User.tokenAuthMiddleware()
         let guardAuthMiddleware = User.guardAuthMiddleware()
         let tokenAuthGroup = usersRoute.grouped(tokenAuthMiddleware, guardAuthMiddleware)
-        tokenAuthGroup.get(use: getAllHandler)
-        tokenAuthGroup.get(User.parameter, use: getHandler)
+        tokenAuthGroup.get(use: self.getAllHandler)
+        tokenAuthGroup.get(User.parameter, use: self.getHandler)
     }
     
     func createHandler(_ req: Request, user: User) throws -> Future<User.Public> {
