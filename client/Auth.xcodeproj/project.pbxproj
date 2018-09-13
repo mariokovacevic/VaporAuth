@@ -12,7 +12,7 @@
 		CD4C5E6120F3DF9B00F5F47D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4C5E5F20F3DF9B00F5F47D /* Main.storyboard */; };
 		CD4C5E6320F3DF9E00F5F47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD4C5E6220F3DF9E00F5F47D /* Assets.xcassets */; };
 		CD4C5E6620F3DF9E00F5F47D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4C5E6420F3DF9E00F5F47D /* LaunchScreen.storyboard */; };
-		CD4C5E6E20F3DFAD00F5F47D /* GoogleWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C5E6D20F3DFAD00F5F47D /* GoogleWebViewController.swift */; };
+		CD4C5E6E20F3DFAD00F5F47D /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C5E6D20F3DFAD00F5F47D /* SocialWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		CD4C5E6220F3DF9E00F5F47D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD4C5E6520F3DF9E00F5F47D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD4C5E6720F3DF9E00F5F47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD4C5E6D20F3DFAD00F5F47D /* GoogleWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWebViewController.swift; sourceTree = "<group>"; };
+		CD4C5E6D20F3DFAD00F5F47D /* SocialWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 			children = (
 				CD4C5E5B20F3DF9B00F5F47D /* AppDelegate.swift */,
 				CD4C5E5D20F3DF9B00F5F47D /* ViewController.swift */,
-				CD4C5E6D20F3DFAD00F5F47D /* GoogleWebViewController.swift */,
+				CD4C5E6D20F3DFAD00F5F47D /* SocialWebViewController.swift */,
 				CD4C5E5F20F3DF9B00F5F47D /* Main.storyboard */,
 				CD4C5E6220F3DF9E00F5F47D /* Assets.xcassets */,
 				CD4C5E6420F3DF9E00F5F47D /* LaunchScreen.storyboard */,
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD4C5E5E20F3DF9B00F5F47D /* ViewController.swift in Sources */,
-				CD4C5E6E20F3DFAD00F5F47D /* GoogleWebViewController.swift in Sources */,
+				CD4C5E6E20F3DFAD00F5F47D /* SocialWebViewController.swift in Sources */,
 				CD4C5E5C20F3DF9B00F5F47D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

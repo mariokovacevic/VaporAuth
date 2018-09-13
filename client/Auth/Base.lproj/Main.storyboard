@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Auth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,14 +32,24 @@
                                     <action selector="signInWithGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1fl-RY-Zgn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-cp-GJV">
+                                <rect key="frame" x="61" y="384" width="252" height="30"/>
+                                <state key="normal" title="Facebook"/>
+                                <connections>
+                                    <action selector="signInWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cPQ-XV-xiY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1gN-lt-Yjd" firstAttribute="top" secondItem="e0w-Zv-RAP" secondAttribute="bottom" constant="8" symbolic="YES" id="AV3-UI-Lsw"/>
                             <constraint firstItem="e0w-Zv-RAP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AYL-2X-2cM"/>
                             <constraint firstItem="e0w-Zv-RAP" firstAttribute="centerX" secondItem="1gN-lt-Yjd" secondAttribute="centerX" id="CfB-IQ-Sdo"/>
+                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="leading" secondItem="1gN-lt-Yjd" secondAttribute="leading" id="D91-y1-FzA"/>
+                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="364" id="Peh-qR-I8k"/>
                             <constraint firstItem="e0w-Zv-RAP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="Wpu-ta-NpK"/>
                             <constraint firstItem="e0w-Zv-RAP" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gap-XD-wN2"/>
+                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="trailing" secondItem="1gN-lt-Yjd" secondAttribute="trailing" id="hWY-HC-E8S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1gN-lt-Yjd" secondAttribute="bottom" constant="118" id="jX8-O0-o6f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

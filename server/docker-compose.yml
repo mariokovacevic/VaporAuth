@@ -21,7 +21,7 @@ services:
     stdin_open: true
     tty: true
   db:
-    image: "mysql:5"
+    image: "mysql:5.7"
     volumes:
       - ./data:/var/lib/mysql
     restart: always

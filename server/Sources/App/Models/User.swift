@@ -35,23 +35,27 @@ final class User: Codable {
     var id: UUID?
     var name: String
     var email: String
+    var picture: String?
     var password: String
     
-    init(name: String, email: String, password: String) {
+    init(name: String, email: String, picture: String? = nil, password: String) {
         self.name = name
         self.email = email
+        self.picture = picture
         self.password = password
     }
     
-    final class Public: Codable {
+    final class Public: Codable, MySQLUUIDModel {
         var id: UUID?
         var name: String
         var email: String
-        
-        init(id: UUID?, name: String, email: String) {
+        var picture: String?
+
+        init(id: UUID?, name: String, email: String, picture: String? = nil) {
             self.id = id
             self.name = name
             self.email = email
+            self.picture = picture
         }
     }
 }
@@ -72,7 +76,7 @@ extension User.Public: Content {}
 
 extension User {
     func convertToPublic() -> User.Public {
-        return User.Public(id: id, name: name, email: email)
+        return User.Public(id: self.id, name: self.name, email: self.email, picture: self.picture)
     }
 }
 

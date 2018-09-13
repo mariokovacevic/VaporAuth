@@ -1,5 +1,5 @@
 //
-//  GoogleWebViewController.swift
+//  SocialWebViewController.swift
 //  Auth
 //
 //  Created by Mario Kovacevic on 09/07/2018.
@@ -8,7 +8,7 @@
 import Foundation
 import WebKit
 
-class GoogleWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
+class SocialWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     open var didReceiveSuccessRespons: ((_ response:String?)->())?
     open var didReceiveErrorRespons: ((_ error:String?)->())?
@@ -52,8 +52,6 @@ class GoogleWebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         self.wkWebView.uiDelegate = self
         self.wkWebView.load(request)
         
-        self.navigationItem.title = "Google"
-
         let leftButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissViewController))
         self.navigationItem.leftBarButtonItem = leftButton
         
@@ -117,7 +115,9 @@ class GoogleWebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     }
     
     @objc func dismissViewController() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+
+        }
     }
     
 }
