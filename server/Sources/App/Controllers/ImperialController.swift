@@ -49,8 +49,7 @@ extension ImperialController {
         return try self.getGoogleProfile(on: request).flatMap(to: ResponseEncodable.self) { userInfo in
             return User.query(on: request).filter(\.email == userInfo.email).first().flatMap(to: ResponseEncodable.self) { foundUser in
                 guard let existingUser = foundUser else {
-                    let password = PasswordGenerator.sharedInstance.generateBasicPassword()
-                    print("password: \(password)") // TODO: REMOVE
+                    let password = PasswordGenerator.sharedInstance.generateBasicPassword() // TODO: Send on email or something
                     let user = User(name: userInfo.name, email: userInfo.email, picture: userInfo.picture, password: password)
                     user.password = try BCrypt.hash(user.password)
                     return user.save(on: request).map(to: ResponseEncodable.self) { user in
@@ -94,8 +93,7 @@ extension ImperialController {
         return try self.getFacebookProfile(on: request).flatMap(to: ResponseEncodable.self) { userInfo in
             return User.query(on: request).filter(\.email == userInfo.email).first().flatMap(to: ResponseEncodable.self) { foundUser in
                 guard let existingUser = foundUser else {
-                    let password = PasswordGenerator.sharedInstance.generateBasicPassword()
-                    print("password: \(password)") // TODO: REMOVE
+                    let password = PasswordGenerator.sharedInstance.generateBasicPassword() // TODO: Send on email or something
                     let user = User(name: userInfo.name, email: userInfo.email, picture: userInfo.picture?.data.url, password: password)
                     user.password = try BCrypt.hash(user.password)
                     return user.save(on: request).map(to: ResponseEncodable.self) { user in

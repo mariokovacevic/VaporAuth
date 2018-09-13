@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,38 +20,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e0w-Zv-RAP">
-                                <rect key="frame" x="16" y="27" width="343" height="468"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e0w-Zv-RAP">
+                                <rect key="frame" x="16" y="163" width="343" height="116"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="FPV-pU-9dc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="116" id="wF5-6B-DjX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-cp-GJV">
+                                <rect key="frame" x="45" y="436" width="284" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="5f0-ht-Xhg"/>
+                                    <constraint firstAttribute="width" secondItem="Sz5-cp-GJV" secondAttribute="height" multiplier="988:160" id="DtX-mo-5ia"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="facebook_button"/>
+                                <connections>
+                                    <action selector="signInWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cPQ-XV-xiY"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gN-lt-Yjd">
-                                <rect key="frame" x="61" y="503" width="252" height="46"/>
+                                <rect key="frame" x="45" y="511" width="284" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1gN-lt-Yjd" secondAttribute="height" multiplier="252:46" id="fwd-ZM-6UC"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="google_button"/>
                                 <connections>
                                     <action selector="signInWithGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1fl-RY-Zgn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz5-cp-GJV">
-                                <rect key="frame" x="61" y="384" width="252" height="30"/>
-                                <state key="normal" title="Facebook"/>
-                                <connections>
-                                    <action selector="signInWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cPQ-XV-xiY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1gN-lt-Yjd" firstAttribute="top" secondItem="e0w-Zv-RAP" secondAttribute="bottom" constant="8" symbolic="YES" id="AV3-UI-Lsw"/>
+                            <constraint firstItem="1gN-lt-Yjd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2dc-Po-2uU"/>
+                            <constraint firstItem="1gN-lt-Yjd" firstAttribute="trailing" secondItem="Sz5-cp-GJV" secondAttribute="trailing" id="3q5-yh-JuJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e0w-Zv-RAP" secondAttribute="trailing" constant="16" id="6hh-Lh-N5T"/>
                             <constraint firstItem="e0w-Zv-RAP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AYL-2X-2cM"/>
                             <constraint firstItem="e0w-Zv-RAP" firstAttribute="centerX" secondItem="1gN-lt-Yjd" secondAttribute="centerX" id="CfB-IQ-Sdo"/>
-                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="leading" secondItem="1gN-lt-Yjd" secondAttribute="leading" id="D91-y1-FzA"/>
-                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="364" id="Peh-qR-I8k"/>
-                            <constraint firstItem="e0w-Zv-RAP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="Wpu-ta-NpK"/>
+                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="top" secondItem="e0w-Zv-RAP" secondAttribute="bottom" constant="157" id="XLv-PO-HbP"/>
+                            <constraint firstItem="e0w-Zv-RAP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="143" id="YQm-VD-16c"/>
+                            <constraint firstItem="1gN-lt-Yjd" firstAttribute="top" secondItem="Sz5-cp-GJV" secondAttribute="bottom" constant="29" id="Zjz-Qf-0q0"/>
+                            <constraint firstItem="1gN-lt-Yjd" firstAttribute="leading" secondItem="Sz5-cp-GJV" secondAttribute="leading" id="eXD-3W-5SE"/>
                             <constraint firstItem="e0w-Zv-RAP" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gap-XD-wN2"/>
-                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="trailing" secondItem="1gN-lt-Yjd" secondAttribute="trailing" id="hWY-HC-E8S"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1gN-lt-Yjd" secondAttribute="bottom" constant="118" id="jX8-O0-o6f"/>
+                            <constraint firstItem="e0w-Zv-RAP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="l06-oe-BAH"/>
+                            <constraint firstItem="Sz5-cp-GJV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zMk-C7-Yw6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -64,6 +79,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="facebook_button" width="988" height="160"/>
         <image name="google_button" width="252" height="46"/>
     </resources>
 </document>
